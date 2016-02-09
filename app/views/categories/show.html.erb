@@ -1,0 +1,19 @@
+<%= render "common/nav", categories: @categories %>
+<div class="container">
+	<%= render "search_bar", category: @category %>
+	<table class="table">
+		<thead>
+			<th></th>
+			<th colspan="2"></th>
+		</thead>
+		<tbody>
+			<% @pets.each do |pet| %>
+			<tr>
+				<td>
+					<%= link_to(pet.title, pet_path(pet), class: "btn btn-default")%>
+				</td>
+			</tr>
+			<%end%>
+		</tbody>
+	</table>
+</div>
