@@ -2,29 +2,31 @@
     <div class="new-pet">
 
       <br>
-      <h3> STEP 1 : 撰寫工作內容 </h3>
+      <h3> STEP 1 : 撰寫公告內容 </h3>
       <hr>
-
-
-
     <br><br>
 
         <div class="col-md-4 col-md-offset-4">
           <%= simple_form_for [@category,@pet] do |f| %>
             <div class="form-group">
-              <%= f.input :title, input_html: { class: "form-control"} %>
+              <%= f.input :title, label: "毛小孩的名字：", input_html: { class: "form-control"} %>
             </div>
             <div class="form-group">
-              <%= f.input :description, input_html: { class: "form-control"} %>
+              <%= f.input :description, label: "公告內容：", input_html: { class: "form-control"} %>
             </div>
             <div class="form-group">
-              <%= f.input :qualification, input_html: { class: "form-control"} %>
+              <%= f.input :qualification, label: "認養資格：", input_html: { class: "form-control"} %>
             </div>
             <div class="form-group">
-            <%= f.input :location, collection: ["台北","桃園","新竹","宜蘭","苗栗","台中","彰化","南投","花蓮","台東","雲林"], selected: "新竹" %>
+            <%= f.input :location, label: "我們在：", collection: ["台北","桃園","新竹","宜蘭","苗栗","台中","彰化","南投","花蓮","台東","雲林","嘉義","台南","高雄","屏東"], selected: "台中" %>
+            </div>
+            <div class="form-group">
+                <%= simple_fields_for :photo do |p| %>
+                <%= p.input :image, as: :file, label: "毛小孩的照片：", input_html: { class: "form-control"}%>
+                <% end %>
             </div>
             <div class="form-actions">
-              <%= f.submit "Submit", disable_with: "Submiting...", class: "btn btn-primary"%>
+              <%= f.submit "確認張貼", disable_with: "Submiting...", class: "btn btn-primary"%>
             </div>
           <% end %>
         </div>

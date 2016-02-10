@@ -10,7 +10,7 @@
 			<% @pets.each do |pet| %>
 			<tr>
 				<td>
-					<%= link_to(pet.title, pet_path(pet), class: "btn btn-default")%>
+					<%= link_to(pet.title, category_pet_path(pet.category, pet), class: "btn btn-default")%>
 				</td>
 			</tr>
 			<%end%>
