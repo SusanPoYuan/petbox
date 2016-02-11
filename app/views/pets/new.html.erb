@@ -11,6 +11,9 @@
             <div class="form-group">
               <%= f.input :title, label: "毛小孩的名字：", input_html: { class: "form-control"} %>
             </div>
+            <div class="form-group"> 
+              <%= f.input :category_id, label: "牠是：", collection: @categories.pluck(:name), selected: @category.name , :input_html => {:onchange => "redirect_to(this.selectedIndex + 1)"} %>
+            </div>
             <div class="form-group">
               <%= f.input :description, label: "公告內容：", input_html: { class: "form-control"} %>
             </div>
@@ -21,9 +24,16 @@
             <%= f.input :location, label: "我們在：", collection: ["台北","桃園","新竹","宜蘭","苗栗","台中","彰化","南投","花蓮","台東","雲林","嘉義","台南","高雄","屏東"], selected: "台中" %>
             </div>
             <div class="form-group">
-                <%= simple_fields_for :photo do |p| %>
-                <%= p.input :image, as: :file, label: "毛小孩的照片：", input_html: { class: "form-control"}%>
+                <%= f.simple_fields_for :photo do |p| %>
+                <%= p.input :image, as: :file, label: "毛小孩的照片："%>
                 <% end %>
+            </div>
+            <br><br>
+            <div class="form-group">
+            <h4>聯絡資訊</h4>
+                <%= f.input :owner_name, label: "稱呼：", input_html: { class: "form-control"} %>
+                <%= f.input :phone, label: "聯絡電話：", input_html: { class: "form-control"} %>
+                <%= f.input :email, label: "電子郵件：", input_html: { class: "form-control"} %>
             </div>
             <div class="form-actions">
               <%= f.submit "確認張貼", disable_with: "Submiting...", class: "btn btn-primary"%>
@@ -33,3 +43,9 @@
 
     </div>
 </div>
+
+<%= javascript_tag do %>
+  function redirect_to(id){
+     window.location = "/categories/" + id + "/pets/new";
+  } 
+<% end %>

@@ -1,16 +1,26 @@
 <%= render "common/nav", categories: @categories %>
+<br><br><br>
 <div class="container">
 	<%= render "search_bar", category: @category %>
+	<br><br>
+	<h2><%= @category.name %>の認養公告</h2>
 	<table class="table">
 		<thead>
-			<th></th>
-			<th colspan="2"></th>
+			<th>日期</th>
+			<th>位置</th>
+			<th>名字</th>
+			<th>說明</th>
+			<th colspan="6"></th>
 		</thead>
 		<tbody>
 			<% @pets.each do |pet| %>
 			<tr>
+				<td><%= pet.created_at %></td>
+				<td><%= pet.location %></td>
+				<td><%= pet.title %></td>
+				<td><%= pet.description %></td>
 				<td>
-					<%= link_to(pet.title, category_pet_path(pet.category, pet), class: "btn btn-default")%>
+					<%= link_to("來去看看！", category_pet_path(pet.category, pet), class: "btn btn-info")%>
 				</td>
 			</tr>
 			<%end%>

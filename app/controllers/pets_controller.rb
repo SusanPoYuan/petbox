@@ -5,11 +5,16 @@ class PetsController < ApplicationController
 	end
 
 	def show
+		@category = Category.find(params[:category_id])
+		@pet = @category.pets.find(params[:id])
+		@photo = @pet.photo
 	end
 	
 	def new
+		@categories = Category.all
 		@category = Category.find(params[:category_id])
 		@pet = @category.pets.new
+		@photo = @pet.build_photo
 	end
 
 	def create
@@ -26,7 +31,6 @@ class PetsController < ApplicationController
 	private
 
 	def pet_params
-		params.require(:pet).permit(:title, :description, :qualification, :location,
-													photo_attributes: [:id, :image])
+		params.require(:pet).permit(:title, :description, :qualification, :location, photo_attributes: [:image, :id])
 	end
 end
