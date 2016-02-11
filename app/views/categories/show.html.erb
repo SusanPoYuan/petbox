@@ -10,12 +10,17 @@
 			<th>位置</th>
 			<th>名字</th>
 			<th>說明</th>
-			<th colspan="6"></th>
+			<th colspan="5"></th>
 		</thead>
 		<tbody>
 			<% @pets.each do |pet| %>
 			<tr>
-				<td><%= pet.created_at %></td>
+				<td>
+					<% if pet.created_at.today? %>
+						<font color="red"><b>New	</b></font>
+					<% end %> 
+					<%= render_time(pet.created_at) %>
+				</td>
 				<td><%= pet.location %></td>
 				<td><%= pet.title %></td>
 				<td><%= pet.description %></td>
