@@ -2,7 +2,7 @@
 <div class="row">
   <div class="col-sm-9 col-lg-8 col-lg-offset-2">
     
-    <%#= form_tag search_jobs_path , :method => :get, :class => "jobs-search-form" do %>
+    <%= form_tag search_pets_path , :method => :get, class: "jobs-search-form" do %>
       <div class="input-group">
         <input type="text" class="form-control" name="q" value="<%= params[:q] %>" placeholder="搜尋公告關鍵字...">
 
@@ -12,10 +12,12 @@
           </button>
         </span>
       </div>
-    <%# end %>
+    <% end %>
   </div>
 
   <div class="col-sm-3 col-lg-2">
-    <%= link_to '張貼認養公告！' , new_category_pet_path(category), class: "btn btn-primary btn-block" %>
+    <% if category.present? %>
+      <%= link_to '張貼認養公告！' , new_category_pet_path(category), class: "btn btn-primary btn-block" %>
+    <% end %>
   </div>
 </div>

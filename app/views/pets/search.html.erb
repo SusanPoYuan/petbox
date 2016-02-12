@@ -1,0 +1,38 @@
+<%= render "common/nav", categories: @categories %>
+<br><br><br>
+<div class="container">
+	<%= render "categories/search_bar", category: nil %>
+	<br><br>
+	<h2><%= %></h2>
+	<table class="table">
+		<thead>
+			<th>日期</th>
+			<th>位置</th>
+			<th>名字</th>
+			<th>說明</th>
+			<th colspan="5"></th>
+		</thead>
+		<tbody>
+			<% if @pets.present? %>
+				<h4>搜尋 "<%=cookies[:search_title]%>" 的結果</h4>
+				<% @pets.each do |pet| %>
+				<tr>
+					<td>
+						<% if pet.created_at.today? %>
+							<font color="red"><b>New	</b></font>
+						<% end %> 
+						<%= render_time(pet.created_at) %>
+					</td>
+					<td><%= pet.location %></td>
+					<td><%= pet.title %></td>
+					<td><%= pet.description %></td>
+					<td>
+						<%= link_to("來去看看！", category_pet_path(pet.category, pet), class: "btn btn-info")%>
+					</td>
+				</tr>
+				<%end%>
+			<%else%>
+				<h4>沒有關於 "<%=cookies[:search_title]%>" 的結果</h4>
+			<%end%>
+		</tbody>
+	</table>
