@@ -5,7 +5,7 @@
 <div class="container">
   <%= render "categories/search_bar", category: @category %>
   <br><br>
-  <div class="job-nav-bar">
+  <div class="back-bar">
   <%= link_to("← 回首頁", root_path, class: "underline") %>
 
   <%= link_to("看更多 #{@pet.category.name} 的工作 →", category_path(@category) , class: "underline pull-right") %>

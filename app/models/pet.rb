@@ -5,7 +5,7 @@ class Pet < ActiveRecord::Base
 
 	validates :title, presence: true
   	validates :description, presence: true
+  	validates :qualification, presence: true
   	validates :location, presence: true
-  	validates :apply_instruction, presence: true
-  	validates :email, email: true
+  	validates :email, email: true, presence: true
 end

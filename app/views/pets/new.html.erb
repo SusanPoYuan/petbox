@@ -5,7 +5,12 @@
       <h3> 撰寫公告內容 </h3>
       <hr>
     <br><br>
+  <div class="back-bar">
+  <%= link_to("← 回首頁", root_path, class: "underline") %>
 
+  <%= link_to("看更多 #{@pet.category.name} 的工作 →", category_path(@category) , class: "underline pull-right") %>
+  </div>
+  <br><br>
         <div class="col-md-4 col-md-offset-4">
           <%= simple_form_for [@category,@pet] do |f| %>
             <div class="form-group">
@@ -15,7 +20,7 @@
               <%= f.input :category_id, label: "牠是：", collection: @categories.pluck(:name), selected: @category.name , :input_html => {:onchange => "redirect_to(this.selectedIndex + 1)"} %>
             </div>
             <div class="form-group">
-              <%= f.input :description, label: "公告內容：", input_html: { class: "form-control"} %>
+              <%= f.input :description, label: "公告內容：", input_html: { class: "form-control" ,:rows => 10} %>
             </div>
             <div class="form-group">
               <%= f.input :qualification, label: "認養資格：", input_html: { class: "form-control"} %>
