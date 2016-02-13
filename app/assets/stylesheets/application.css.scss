@@ -18,6 +18,14 @@
 @import "bootstrap-sprockets";
 @import "font-awesome";
 
+.pet_content{
+  padding-top: 10px;
+  padding-bottom: 10px;
+  font-size: 25px;
+  font-weight: bold;
+  color: #000000;
+  }
+
 /* navbar */
 $bgDefault      : #e74c3c;
 $bgHighlight    : #c0392b;

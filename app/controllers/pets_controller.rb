@@ -6,6 +6,7 @@ class PetsController < ApplicationController
 	end
 
 	def show
+		@categories = Category.all
 		@category = Category.find(params[:category_id])
 		@pet = @category.pets.find(params[:id])
 		@photo = @pet.photo
@@ -52,6 +53,7 @@ class PetsController < ApplicationController
 	private
 
 	def pet_params
-		params.require(:pet).permit(:title, :description, :qualification, :location, photo_attributes: [:image, :id])
+		params.require(:pet).permit(:title, :description, :qualification, :location, 
+			:owner_name, :phone, :email, photo_attributes: [:image, :id])
 	end
 end

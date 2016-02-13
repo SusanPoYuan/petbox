@@ -1,19 +1,46 @@
+<%= render "common/nav", categories: @categories %>
 
+<br><br><br>
+
+<div class="container">
+  <%= render "categories/search_bar", category: @category %>
+  <br><br>
+  <div class="job-nav-bar">
+  <%= link_to("← 回首頁", root_path, class: "underline") %>
+
+  <%= link_to("看更多 #{@pet.category.name} 的工作 →", category_path(@category) , class: "underline pull-right") %>
+  </div>
+  
+  <h2><b><%= @category.name%>領養： </b><%= @pet.title %></h2><br>
+  <h4>
+    <i class="fa fa-calendar-check-o">建立時間：</i><%= render_time(@pet.created_at) %><br><br>
+    <i class="fa fa-map-marker">所在位置：</i><%= @pet.location %>
+  </h4>
+<br><hr>
 <div class="row">
-  <div class="col-md-6">
+  <div class="col-md-5">
   	<% if @photo.present? %>
    		<%= image_tag(@pet.photo.image.url, class: "thumbnail") %>
    	<% else %>
    		<%= image_tag("http://placehold.it/400x400&text=No Pic", class: "thumbnail") %>
    	<% end %>
   </div>
-  <div class="col-md-6">
-    <h2> <%= @pet.title %> </h2>
+  <div class="col-md-5">
     <div style="height:100px;">
+      <div class="pet_content">
       <p>
-        <%= @pet.description %>
+        領養說明：<%= @pet.description %>
+      </p>
+      <p>
+        領養條件：<%= @pet.qualification %>
+      </p>
+      <p>
+        聯絡資訊：
+        <%= @pet.owner_name %>
+        <%= @pet.phone %>
+        <%= @pet.email %>
       </p>
     </div>
-    <div> 位置: <%= @pet.location %> </div>
+    </div>
   </div>
 </div>
