@@ -1,15 +1,13 @@
 class PetsController < ApplicationController
 	before_filter :validate_search_key , :only => [:search]
 
-	def index
-		@categories = Category.all
-	end
-
 	def show
 		@categories = Category.all
 		@category = Category.find(params[:category_id])
 		@pet = @category.pets.find(params[:id])
 		@photo = @pet.photo
+    	set_page_title @pet.title
+
 	end
 	
 	def new
@@ -37,6 +35,7 @@ class PetsController < ApplicationController
 	      @pets = search_result.paginate(:page => params[:page], :per_page => 20 )
     	end
     	cookies[:search_title] = @query_string
+    	set_page_title @query_string
   	end
 
 	protected

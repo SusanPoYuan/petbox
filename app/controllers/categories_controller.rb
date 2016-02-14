@@ -3,5 +3,6 @@ class CategoriesController < ApplicationController
 		@categories = Category.all
 		@category = Category.find(params[:id])
 		@pets = @category.pets.order("updated_at DESC")
-	end
+		set_page_title  @category.name + "の認養"
+ 	end
 end
