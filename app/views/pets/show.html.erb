@@ -29,16 +29,20 @@
     <div style="height:100px;">
       <div class="pet_content">
       <p>
-        領養說明：<%= @pet.description %>
-      </p>
+        <b>關於小寵物：</b>
+        <br>性別   ：<%= @pet.sexual %>
+        <br>年齡   ：<%= @pet.age_years %>年<%= @pet.age_months %>月
+        <br>品種   ：<%= @pet.pettype %>
+        <br>體型   ：<%= @pet.size %>
+        <br>結紮   ：<%= @pet.ligation %>
+        <br>其他說明：<%= @pet.description %>
+        <br>領養條件：<%= @pet.qualification %>
       <p>
-        領養條件：<%= @pet.qualification %>
-      </p>
       <p>
-        聯絡資訊：
-        <%= @pet.owner_name %>
-        <%= @pet.phone %>
-        <%= @pet.email %>
+        <br><b>聯絡資訊：</b>
+        <br><%= @pet.owner_name %>
+        <br><%= @pet.phone %>
+        <br><%= @pet.email %>
       </p>
     </div>
     </div>

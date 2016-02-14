@@ -17,10 +17,26 @@
               <%= f.input :title, label: "毛小孩的名字：", input_html: { class: "form-control"} %>
             </div>
             <div class="form-group"> 
-              <%= f.input :category_id, label: "牠是：", collection: @categories.pluck(:name), selected: @category.name , :input_html => {:onchange => "redirect_to(this.selectedIndex + 1)"} %>
+              <%= f.input :category_id, label: "牠是：", collection: @categories.pluck(:name), selected: @category.name , input_html: {:onchange => "redirect_to(this.selectedIndex + 1)"} %>
             </div>
             <div class="form-group">
-              <%= f.input :description, label: "公告內容：", input_html: { class: "form-control" ,:rows => 10} %>
+              <%= f.input :pettype, label: "品種：", input_html: { class: "form-control"} %>
+            </div>
+            <div class="form-group">
+              <%= f.input :sexual, label: "性別：", collection: ["公","母"], selected: "公" %>
+            </div>
+            <div class="form-inline">
+              <%= f.input :age_years, label: "年紀：", collection: 0..20, selected: 0, input_html: { style: 'width: 40px'}%>年
+              <%= f.input :age_months, label: false, collection: 0..12, selected: 0, input_html: { style: 'width: 40px'}%>月
+            </div><br>
+            <div class="form-group">
+              <%= f.input :size, label: "體型：", collection: ["大型","一般","小型"], selected: "一般" %>
+            </div>
+            <div class="form-group">
+              <%= f.input :ligation, label: "結紮：", collection: ["已結紮","無結紮"], selected: "已結紮" %>
+            </div>
+            <div class="form-group">
+              <%= f.input :description, label: "補充說明：", input_html: { class: "form-control"} %>
             </div>
             <div class="form-group">
               <%= f.input :qualification, label: "認養資格：", input_html: { class: "form-control"} %>

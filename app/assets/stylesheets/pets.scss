@@ -1,3 +1,12 @@
 // Place all the styles related to the pets controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.form-inline div { display: inline-block }
+
+.pet_content{
+  padding-top: 10px;
+  padding-bottom: 10px;
+  font-size: 25px;
+  color: #000000;
+  }
